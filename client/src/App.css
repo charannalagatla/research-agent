@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0f0f0f;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: 4px;
+  margin-bottom: 32px;
+  font-size: 0.9rem;
+}
+
+/* INPUT */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 12px 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #555;
+}
+
+.search-box button {
+  padding: 12px 24px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search-box button:disabled {
+  background: #1e3a6e;
+  cursor: not-allowed;
+}
+
+/* STEPS */
+.steps {
+  margin-bottom: 32px;
+}
+
+.steps h2 {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #1a1a1a;
+  border-left: 3px solid #333;
+  animation: fadeIn 0.3s ease;
+  /* each step fades in so it feels live */
+}
+
+.step-search, .step-search_done { border-left-color: #2563eb; }
+.step-scrape { border-left-color: #7c3aed; }
+.step-reason, .step-reason_done { border-left-color: #059669; }
+.step-synthesize, .step-done { border-left-color: #d97706; }
+.step-error { border-left-color: #dc2626; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* REPORT */
+.report {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.report h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.report-content p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.report h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sources {
+  list-style: none;
+}
+
+.sources li {
+  margin-bottom: 6px;
+}
+
+.sources a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
