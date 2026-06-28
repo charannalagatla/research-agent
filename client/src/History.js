@@ -20,7 +20,7 @@ function History() {
   useEffect(() => {
     // useEffect with empty [] runs once when component mounts
     // this is where you fetch data on page load
-    fetch('http://localhost:5000/api/sessions')
+    fetch('https://research-agent-backend-wyuo.onrender.com/api/sessions')
       .then(res => res.json())
       .then(data => {
         setSessions(data);
@@ -36,7 +36,7 @@ function History() {
 
   const openSession = (id) => {
     // when user clicks a session, fetch the full document by id
-    fetch(`http://localhost:5000/api/sessions/${id}`)
+    fetch(`https://research-agent-backend-wyuo.onrender.com/api/sessions/${id}`)
       .then(res => res.json())
       .then(data => setSelected(data));
       // sets selected — triggers re-render to show full report

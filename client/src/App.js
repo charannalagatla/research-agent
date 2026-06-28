@@ -34,7 +34,7 @@ function Research() {
     setLoading(true);
 
     const eventSource = new EventSource(
-      `http://localhost:5000/api/research/stream?topic=${encodeURIComponent(topicToSearch)}`
+      `https://research-agent-backend-wyuo.onrender.com/api/research/stream?topic=${encodeURIComponent(topicToSearch)}`
     );
 
     eventSource.onmessage = (event) => {
