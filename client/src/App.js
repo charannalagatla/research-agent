@@ -25,7 +25,7 @@ function Research() {
   const [clarification, setClarification] = useState(null);
   const [clarificationInput, setClarificationInput] = useState('');
 
-  const startResearchWithTopic = (topicToSearch) => {
+  const startResearchWithTopic = (topicToSearch, clarified = false) => {
     if (!topicToSearch.trim()) return;
     setSteps([]);
     setReport(null);
@@ -33,9 +33,10 @@ function Research() {
     setClarification(null);
     setLoading(true);
 
-    const eventSource = new EventSource(
-      `https://research-agent-backend-wyuo.onrender.com/api/research/stream?topic=${encodeURIComponent(topicToSearch)}`
-    );
+    const url = `https://research-agent-backend-wyuo.onrender.com/api/research/stream?topic=${encodeURIComponent(topicToSearch)}${clarified ? '&clarified=true' : ''}`;
+    // if clarified=true, append the flag so backend skips ambiguity check
+
+    const eventSource = new EventSource(url);
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -76,11 +77,10 @@ function Research() {
 
   const submitClarification = () => {
     const refinedTopic = `${topic} — ${clarificationInput}`;
-    // combines "SDN" + "Software-Defined Networking" into one clear query
     setClarification(null);
     setClarificationInput('');
     setTopic(refinedTopic);
-    startResearchWithTopic(refinedTopic);
+    startResearchWithTopic(refinedTopic, true); // <-- clarified = true
   };
 
   return (
